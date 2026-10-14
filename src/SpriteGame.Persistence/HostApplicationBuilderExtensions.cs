@@ -2,8 +2,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace SpriteGame.Persistence;
 
-// ReSharper disable once InconsistentNaming
-public static class IHostApplicationBuilderExtensions
+public static class HostApplicationBuilderExtensions
 {
     public static IHostApplicationBuilder ConfigureDatabase(this IHostApplicationBuilder builder)
     {

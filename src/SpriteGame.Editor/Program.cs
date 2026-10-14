@@ -15,6 +15,7 @@ builder.Services.AddProblemDetails();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+await app.MigrateDbAsync();
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
