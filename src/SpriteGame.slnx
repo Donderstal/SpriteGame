@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="SpriteGame.AppHost\SpriteGame.AppHost.csproj" />
+  <Project Path="SpriteGame.Domain\SpriteGame.Domain.csproj" />
+  <Project Path="SpriteGame.Editor\SpriteGame.Editor.csproj" />
+  <Project Path="SpriteGame.Game\SpriteGame.Game.csproj" />
+  <Project Path="SpriteGame.Persistence\SpriteGame.Persistence.csproj" />
+  <Project Path="SpriteGame.ServiceDefaults\SpriteGame.ServiceDefaults.csproj" />
+</Solution>
