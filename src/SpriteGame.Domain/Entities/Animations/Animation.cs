@@ -1,6 +1,6 @@
 using SpriteGame.Domain.Enums;
 
-namespace SpriteGame.Domain.Entities;
+namespace SpriteGame.Domain.Entities.Animations;
 
 public class Animation
 {
@@ -10,5 +10,5 @@ public class Animation
     public AnimationType Type { get; set; }
     public Direction Direction { get; set; }
 
-    public required List<AnimationFrame> Frames = [];
+    public ICollection<AnimationFrame> Frames { get; } = new List<AnimationFrame>();
 }
