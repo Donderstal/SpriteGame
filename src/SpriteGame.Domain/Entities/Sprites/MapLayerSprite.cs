@@ -4,7 +4,7 @@ using SpriteGame.Domain.Enums;
 
 namespace SpriteGame.Domain.Entities.Sprites;
 
-public class MapLayerSprite
+public class MapLayerSprite : IEntity
 {
     public Guid Id { get; set; }
     

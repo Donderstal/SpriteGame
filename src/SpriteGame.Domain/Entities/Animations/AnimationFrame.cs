@@ -1,6 +1,6 @@
 namespace SpriteGame.Domain.Entities.Animations;
 
-public class AnimationFrame
+public class AnimationFrame : IEntity
 {
     public Guid Id { get; set; }
     

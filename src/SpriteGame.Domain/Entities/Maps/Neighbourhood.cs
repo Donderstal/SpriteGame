@@ -1,9 +1,8 @@
 using SpriteGame.Domain.Entities.Assets;
-using SpriteGame.Domain.Entities.Maps;
 
-namespace SpriteGame.Domain.Entities;
+namespace SpriteGame.Domain.Entities.Maps;
 
-public class Neighbourhood
+public class Neighbourhood : IEntity
 {
     public Guid Id { get; set; }
     

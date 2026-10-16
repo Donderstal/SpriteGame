@@ -3,7 +3,7 @@ using SpriteGame.Domain.Entities.Sprites;
 
 namespace SpriteGame.Domain.Entities.Maps;
 
-public class InteractiveMapLayer
+public class InteractiveMapLayer : IEntity
 {
     public Guid Id { get; set; }
     

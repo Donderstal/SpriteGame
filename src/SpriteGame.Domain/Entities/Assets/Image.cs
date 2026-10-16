@@ -2,7 +2,7 @@ using SpriteGame.Domain.Entities.Sprites;
 
 namespace SpriteGame.Domain.Entities.Assets;
 
-public class Image
+public class Image : IEntity
 {
     public Guid Id { get; set; }
     public required byte[] File { get; set; }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpriteGame.Domain.Entities;
 using SpriteGame.Domain.Entities.Animations;
 using SpriteGame.Domain.Entities.Assets;
 using SpriteGame.Domain.Entities.Events;
@@ -16,8 +15,6 @@ public class SpriteGameDbContext(DbContextOptions<SpriteGameDbContext> options) 
     public DbSet<AnimationFrame> AnimationFrames { get; set; }
     public DbSet<Audio> Audio { get; set; }
     
-    public DbSet<StaticMapLayer> StaticMapLayers { get; set; }
-    
     public DbSet<Condition> Conditions { get; set; }
     
     public DbSet<Event> Events { get; set; }
@@ -31,6 +28,7 @@ public class SpriteGameDbContext(DbContextOptions<SpriteGameDbContext> options) 
     public DbSet<Inventory> Inventory { get; set; }
     public DbSet<InventoryItem> InventoryItem { get; set; }
     public DbSet<Interaction> Interactions { get; set; }
+    public DbSet<InteractiveMapLayer> InteractiveMapLayers { get; set; }
     public DbSet<Item> Item { get; set; }
     
     public DbSet<Map> Maps { get; set; }
@@ -43,7 +41,7 @@ public class SpriteGameDbContext(DbContextOptions<SpriteGameDbContext> options) 
     
     public DbSet<SpriteAnimation> SpriteAnimations { get; set; }
     public DbSet<Sprite> Sprites { get; set; }
-    public DbSet<InteractiveMapLayer> InteractiveMapLayers { get; set; }
+    public DbSet<StaticMapLayer> StaticMapLayers { get; set; }
     
     public DbSet<TileSheet> TileSheets { get; set; }
     public DbSet<Trigger> Triggers { get; set; }

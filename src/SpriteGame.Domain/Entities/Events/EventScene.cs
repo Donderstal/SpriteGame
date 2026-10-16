@@ -1,6 +1,6 @@
 namespace SpriteGame.Domain.Entities.Events;
 
-public class EventScene
+public class EventScene : IEntity
 {
     public Guid Id { get; set; }
     public int Index { get; set; }

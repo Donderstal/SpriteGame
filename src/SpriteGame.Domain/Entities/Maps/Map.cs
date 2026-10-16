@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpriteGame.Domain.Entities.Maps;
 
-public class Map
+public class Map : IEntity
 {
     public Guid Id { get; set; }
     

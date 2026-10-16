@@ -3,7 +3,7 @@ using SpriteGame.Domain.Enums;
 
 namespace SpriteGame.Domain.Entities.PlayerData;
 
-public class PlayerInteractions
+public class PlayerInteractions : IEntity
 {
     public Guid Id { get; set; }
     

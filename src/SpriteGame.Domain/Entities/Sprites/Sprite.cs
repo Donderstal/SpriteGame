@@ -2,7 +2,7 @@ using SpriteGame.Domain.Entities.Assets;
 
 namespace SpriteGame.Domain.Entities.Sprites;
 
-public class Sprite
+public class Sprite : IEntity
 {
     public Guid Id { get; set; }
     

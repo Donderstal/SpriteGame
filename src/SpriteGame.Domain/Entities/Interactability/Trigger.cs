@@ -4,7 +4,7 @@ using SpriteGame.Domain.Enums;
 
 namespace SpriteGame.Domain.Entities.Interactability;
 
-public class Trigger
+public class Trigger : IEntity
 {
     public Guid Id { get; set; }
     

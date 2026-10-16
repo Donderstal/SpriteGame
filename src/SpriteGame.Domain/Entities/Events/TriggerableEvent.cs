@@ -2,7 +2,7 @@ using SpriteGame.Domain.Entities.Interactability;
 
 namespace SpriteGame.Domain.Entities.Events;
 
-public class TriggerableEvent
+public class TriggerableEvent : IEntity
 {
     public Guid Id { get; set; }
     

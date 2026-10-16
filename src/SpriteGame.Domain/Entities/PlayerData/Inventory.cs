@@ -1,8 +1,6 @@
-using SpriteGame.Domain.Entities.Sprites;
-
 namespace SpriteGame.Domain.Entities.PlayerData;
 
-public class Inventory
+public class Inventory : IEntity
 {
     public Guid Id { get; set; }
     

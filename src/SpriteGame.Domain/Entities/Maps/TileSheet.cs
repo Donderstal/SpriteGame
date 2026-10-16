@@ -2,7 +2,7 @@ using SpriteGame.Domain.Entities.Assets;
 
 namespace SpriteGame.Domain.Entities.Maps;
 
-public class TileSheet
+public class TileSheet : IEntity
 {
     public Guid Id { get; set; }
     

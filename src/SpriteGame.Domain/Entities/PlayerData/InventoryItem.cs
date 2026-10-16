@@ -2,7 +2,7 @@ using SpriteGame.Domain.Entities.Interactability;
 
 namespace SpriteGame.Domain.Entities.PlayerData;
 
-public class InventoryItem
+public class InventoryItem : IEntity
 {
     public Guid Id { get; set; }
     

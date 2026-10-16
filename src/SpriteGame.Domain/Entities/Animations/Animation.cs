@@ -2,7 +2,7 @@ using SpriteGame.Domain.Enums;
 
 namespace SpriteGame.Domain.Entities.Animations;
 
-public class Animation
+public class Animation : IEntity
 {
     public Guid Id { get; set; }
     
