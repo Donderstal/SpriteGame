@@ -1,3 +1,5 @@
+using Editor.UseCases;
+using Editor.UseCases.Interfaces;
 using SpriteGame.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,16 +10,17 @@ builder.ConfigureDatabase();
 builder.AddRedisClientBuilder("cache")
     .WithOutputCache();
 
-// Add services to the container.
-builder.Services.AddProblemDetails();
-
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
+// Add custom dependencies
 builder.Services.AddRepositories();
 
+builder.Services.AddScoped<IInsertImageUseCase, InsertImageUseCase>();
+
+// Add ASP.Net helper dependencies
+builder.Services.AddValidation();
+builder.Services.AddOpenApi();
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
-await app.MigrateDbAsync();
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
@@ -29,5 +32,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseOutputCache();
 app.MapDefaultEndpoints();
+
+await app.MigrateDbAsync();
+
+var baseGroup = app.MapGroup("/api/");
 
 app.Run();
