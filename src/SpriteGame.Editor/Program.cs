@@ -1,5 +1,5 @@
 using Editor;
-using Editor.UseCases;
+using Editor.UseCases.Images;
 using SpriteGame.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);

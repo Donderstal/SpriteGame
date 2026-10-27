@@ -2,7 +2,7 @@ using Editor.Requests.Images;
 using SpriteGame.Domain.Entities.Assets;
 using SpriteGame.Persistence.Repositories;
 
-namespace Editor.UseCases;
+namespace Editor.UseCases.Images;
 
 public class InsertImageUseCase(
     IEntityRepository<Image> imageRepository    
@@ -18,8 +18,10 @@ public class InsertImageUseCase(
             File = stream.ToArray()
         };
         
+        ct.ThrowIfCancellationRequested();
+        
         var id = imageRepository.Add(imageEntity);
-        await imageRepository.SaveChangesAsync();
+        await imageRepository.SaveChangesAsync(ct);
 
         return id;
     }

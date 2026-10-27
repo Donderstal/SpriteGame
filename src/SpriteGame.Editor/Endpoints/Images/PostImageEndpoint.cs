@@ -1,5 +1,5 @@
 using Editor.Requests.Images;
-using Editor.UseCases;
+using Editor.UseCases.Images;
 
 namespace Editor.Endpoints.Images;
 
@@ -12,9 +12,6 @@ public static class PostImageEndpoint
 
     private static async Task<IResult> Handler(PostImageRequest request, InsertImageUseCase useCase, CancellationToken ct)
     {
-        if (ct.IsCancellationRequested)
-            return Results.Problem();
-        
         var newId = await useCase.Handle(request, ct);
         return Results.Ok(newId);
     }

@@ -22,5 +22,5 @@ public interface IEntityRepository<T> where T : class, IEntity
     
     void DeleteRange(IEnumerable<T> entities);
     
-    Task SaveChangesAsync();
+    Task SaveChangesAsync(CancellationToken ct = default);
 }
