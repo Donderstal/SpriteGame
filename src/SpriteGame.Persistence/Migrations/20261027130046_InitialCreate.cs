@@ -54,7 +54,7 @@ namespace SpriteGame.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     File = table.Column<byte[]>(type: "bytea", nullable: false)
                 },
                 constraints: table =>

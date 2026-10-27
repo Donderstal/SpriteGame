@@ -1,20 +1,21 @@
-using Editor.UseCases.Interfaces;
+using Editor.Requests.Images;
 using SpriteGame.Domain.Entities.Assets;
-using SpriteGame.Domain.Requests;
 using SpriteGame.Persistence.Repositories;
 
 namespace Editor.UseCases;
 
 public class InsertImageUseCase(
     IEntityRepository<Image> imageRepository    
-) : IInsertImageUseCase
-{
-    public async Task<Guid> Handle(InsertImageRequest useCase)
+) {
+    public async Task<Guid> Handle(PostImageRequest request, CancellationToken ct)
     {
+        using var stream = new MemoryStream();
+        await request.File.CopyToAsync(stream, ct);
+        
         var imageEntity = new Image
         {
-            Name = useCase.Name,
-            File = useCase.Data,
+            Name = request.File.FileName,
+            File = stream.ToArray()
         };
         
         var id = imageRepository.Add(imageEntity);

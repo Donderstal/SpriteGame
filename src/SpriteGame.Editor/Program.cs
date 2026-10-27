@@ -1,6 +1,5 @@
-using Editor.Endpoints;
+using Editor;
 using Editor.UseCases;
-using Editor.UseCases.Interfaces;
 using SpriteGame.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +13,7 @@ builder.AddRedisClientBuilder("cache")
 // Add custom dependencies
 builder.Services.AddRepositories();
 
-builder.Services.AddScoped<IInsertImageUseCase, InsertImageUseCase>();
+builder.Services.AddScoped<InsertImageUseCase>();
 
 // Add ASP.Net helper dependencies
 builder.Services.AddValidation();
@@ -36,8 +35,6 @@ app.MapDefaultEndpoints();
 
 await app.MigrateDbAsync();
 
-app.MapGroup("/api/")
-    .AllowAnonymous()
-    .MapImageEndpoints();
+app.MapEndpoints();
 
 app.Run();
