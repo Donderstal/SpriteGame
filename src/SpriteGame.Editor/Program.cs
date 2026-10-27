@@ -1,3 +1,4 @@
+using Editor.Endpoints;
 using Editor.UseCases;
 using Editor.UseCases.Interfaces;
 using SpriteGame.Persistence;
@@ -35,6 +36,8 @@ app.MapDefaultEndpoints();
 
 await app.MigrateDbAsync();
 
-var baseGroup = app.MapGroup("/api/");
+app.MapGroup("/api/")
+    .AllowAnonymous()
+    .MapImageEndpoints();
 
 app.Run();
