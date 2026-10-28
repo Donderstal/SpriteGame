@@ -11,7 +11,7 @@ public class StaticMapLayer : IEntity
     public Map Map { get; set; } = null!;
     
     public Guid ImageId { get; set; }
-    public Image Image { get; set; } = null!;
+    public Asset Asset { get; set; } = null!;
     
     [Column(TypeName = "jsonb")]
     public required string BlockedAreas { get; set; }

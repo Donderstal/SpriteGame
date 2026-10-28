@@ -16,4 +16,8 @@
       <ProjectReference Include="..\SpriteGame.Domain\SpriteGame.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
+
 </Project>

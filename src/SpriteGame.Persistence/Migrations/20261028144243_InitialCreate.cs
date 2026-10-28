@@ -26,16 +26,18 @@ namespace SpriteGame.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Audio",
+                name: "Assets",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    File = table.Column<byte[]>(type: "bytea", nullable: false)
+                    MimeType = table.Column<string>(type: "text", nullable: false),
+                    Path = table.Column<string>(type: "text", nullable: false),
+                    Type = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Audio", x => x.Id);
+                    table.PrimaryKey("PK_Assets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,18 +49,6 @@ namespace SpriteGame.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Events", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    File = table.Column<byte[]>(type: "bytea", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,9 +111,31 @@ namespace SpriteGame.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Neighbourhoods", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Neighbourhoods_Audio_MusicId",
+                        name: "FK_Neighbourhoods_Assets_MusicId",
                         column: x => x.MusicId,
-                        principalTable: "Audio",
+                        principalTable: "Assets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TileSheets",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ImageId = table.Column<Guid>(type: "uuid", nullable: false),
+                    AssetId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    TileCount = table.Column<int>(type: "integer", nullable: false),
+                    BlockedTiles = table.Column<int[]>(type: "integer[]", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TileSheets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TileSheets_Assets_AssetId",
+                        column: x => x.AssetId,
+                        principalTable: "Assets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -144,27 +156,6 @@ namespace SpriteGame.Persistence.Migrations
                         column: x => x.EventId,
                         principalTable: "Events",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TileSheets",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ImageId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    TileCount = table.Column<int>(type: "integer", nullable: false),
-                    BlockedTiles = table.Column<int[]>(type: "integer[]", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TileSheets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TileSheets_Images_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "Images",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -283,7 +274,7 @@ namespace SpriteGame.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     SpriteImageId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ImageId = table.Column<Guid>(type: "uuid", nullable: false),
+                    AssetId = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     HasCollision = table.Column<bool>(type: "boolean", nullable: false),
                     VerticallyAligned = table.Column<bool>(type: "boolean", nullable: false),
@@ -297,9 +288,9 @@ namespace SpriteGame.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Sprites", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sprites_Images_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "Images",
+                        name: "FK_Sprites_Assets_AssetId",
+                        column: x => x.AssetId,
+                        principalTable: "Assets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -521,15 +512,16 @@ namespace SpriteGame.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     MapId = table.Column<Guid>(type: "uuid", nullable: false),
                     ImageId = table.Column<Guid>(type: "uuid", nullable: false),
+                    AssetId = table.Column<Guid>(type: "uuid", nullable: false),
                     BlockedAreas = table.Column<string>(type: "jsonb", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StaticMapLayers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StaticMapLayers_Images_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "Images",
+                        name: "FK_StaticMapLayers_Assets_AssetId",
+                        column: x => x.AssetId,
+                        principalTable: "Assets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -672,9 +664,9 @@ namespace SpriteGame.Persistence.Migrations
                 column: "SpriteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sprites_ImageId",
+                name: "IX_Sprites_AssetId",
                 table: "Sprites",
-                column: "ImageId");
+                column: "AssetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sprites_InteractiveMapLayerId",
@@ -682,9 +674,9 @@ namespace SpriteGame.Persistence.Migrations
                 column: "InteractiveMapLayerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StaticMapLayers_ImageId",
+                name: "IX_StaticMapLayers_AssetId",
                 table: "StaticMapLayers",
-                column: "ImageId");
+                column: "AssetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StaticMapLayers_MapId",
@@ -692,9 +684,9 @@ namespace SpriteGame.Persistence.Migrations
                 column: "MapId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TileSheets_ImageId",
+                name: "IX_TileSheets_AssetId",
                 table: "TileSheets",
-                column: "ImageId");
+                column: "AssetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TriggerableEvents_ConditionId",
@@ -859,10 +851,7 @@ namespace SpriteGame.Persistence.Migrations
                 name: "StaticMapLayers");
 
             migrationBuilder.DropTable(
-                name: "Audio");
-
-            migrationBuilder.DropTable(
-                name: "Images");
+                name: "Assets");
         }
     }
 }

@@ -7,7 +7,7 @@ public class TileSheet : IEntity
     public Guid Id { get; set; }
     
     public Guid ImageId { get; set; }
-    public Image Image { get; set; } = null!;
+    public Asset Asset { get; set; } = null!;
     
     public required string Name { get; set; }
     public int TileCount { get; set; }

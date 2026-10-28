@@ -13,7 +13,7 @@ public class SpriteGameDbContext(DbContextOptions<SpriteGameDbContext> options) 
 {
     public DbSet<Animation> Animations { get; set; }
     public DbSet<AnimationFrame> AnimationFrames { get; set; }
-    public DbSet<Audio> Audio { get; set; }
+    public DbSet<Asset> Assets { get; set; }
     
     public DbSet<Condition> Conditions { get; set; }
     
@@ -24,7 +24,6 @@ public class SpriteGameDbContext(DbContextOptions<SpriteGameDbContext> options) 
     
     public DbSet<Door> Doors { get; set; }
     
-    public DbSet<Image> Images { get; set; }
     public DbSet<Inventory> Inventory { get; set; }
     public DbSet<InventoryItem> InventoryItem { get; set; }
     public DbSet<Interaction> Interactions { get; set; }

@@ -7,7 +7,7 @@ public class Sprite : IEntity
     public Guid Id { get; set; }
     
     public Guid SpriteImageId { get; set; }
-    public Image Image { get; set; } = null!;
+    public Asset Asset { get; set; } = null!;
     
     public required string Name { get; set; }
     public bool HasCollision { get; set; }
