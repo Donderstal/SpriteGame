@@ -14,7 +14,7 @@ public class InsertImageUseCase(
         
         var imageEntity = new Image
         {
-            Name = request.File.FileName,
+            Name = request.Name,
             File = stream.ToArray()
         };
         

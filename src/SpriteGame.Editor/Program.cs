@@ -1,5 +1,5 @@
-using Editor;
-using Editor.UseCases.Images;
+using Editor.Endpoints;
+using Editor.UseCases;
 using SpriteGame.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +12,7 @@ builder.AddRedisClientBuilder("cache")
 
 // Add custom dependencies
 builder.Services.AddRepositories();
-
-builder.Services.AddScoped<InsertImageUseCase>();
+builder.Services.AddUseCases();
 
 // Add ASP.Net helper dependencies
 builder.Services.AddValidation();
