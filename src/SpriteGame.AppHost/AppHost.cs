@@ -1,3 +1,5 @@
+using SpriteGame.AppHost;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");
@@ -7,18 +9,10 @@ var postgres = builder.AddPostgres("postgres")
 
 var database = postgres.AddDatabase("spritegame");
 
-builder.AddProject<Projects.SpriteGame_Game>("game-api")
-    .WithReference(database)
-    .WithReference(cache)
-    .WaitFor(database)
-    .WithHttpHealthCheck("/health")
-    .WithExternalHttpEndpoints();
+builder.AddDockerfile("game-api", "..", "SpriteGame.Game/Dockerfile")
+    .AddApiResources(database, cache);
 
-builder.AddProject<Projects.SpriteGame_Editor>("editor-api")
-    .WithReference(database)
-    .WithReference(cache)
-    .WaitFor(database)
-    .WithHttpHealthCheck("/health")
-    .WithExternalHttpEndpoints();
+builder.AddDockerfile("editor-api", "..", "SpriteGame.Editor/Dockerfile")
+    .AddApiResources(database, cache);
 
 builder.Build().Run();
