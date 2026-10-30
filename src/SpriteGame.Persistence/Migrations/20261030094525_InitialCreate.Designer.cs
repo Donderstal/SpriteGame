@@ -12,7 +12,7 @@ using SpriteGame.Persistence;
 namespace SpriteGame.Persistence.Migrations
 {
     [DbContext(typeof(SpriteGameDbContext))]
-    [Migration("20261028144243_InitialCreate")]
+    [Migration("20261030094525_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -79,10 +79,6 @@ namespace SpriteGame.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<string>("MimeType")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

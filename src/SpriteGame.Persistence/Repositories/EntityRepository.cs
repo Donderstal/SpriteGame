@@ -61,6 +61,11 @@ public class EntityRepository<T>(SpriteGameDbContext dbContext) : IEntityReposit
         dbContext.Set<T>().RemoveRange(entities);
     }
     
+    public async Task SaveChangesAsync(CancellationToken ct = default)
+    { 
+        await dbContext.SaveChangesAsync(ct);
+    }
+    
     private static IQueryable<T> IncludeProperties(
         IQueryable<T> query,
         params Expression<Func<T, object>>[] includeProperties)
