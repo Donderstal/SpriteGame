@@ -5,4 +5,5 @@
   <Project Path="SpriteGame.Game\SpriteGame.Game.csproj" />
   <Project Path="SpriteGame.Persistence\SpriteGame.Persistence.csproj" />
   <Project Path="SpriteGame.ServiceDefaults\SpriteGame.ServiceDefaults.csproj" />
+  <Project Path="SpriteGame.Shared/SpriteGame.Shared.csproj" />
 </Solution>

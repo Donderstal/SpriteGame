@@ -5,7 +5,6 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>Editor</RootNamespace>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,11 +19,12 @@
     <ItemGroup>
       <ProjectReference Include="..\SpriteGame.Persistence\SpriteGame.Persistence.csproj" />
       <ProjectReference Include="..\SpriteGame.ServiceDefaults\SpriteGame.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\SpriteGame.Shared\SpriteGame.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 </Project>
