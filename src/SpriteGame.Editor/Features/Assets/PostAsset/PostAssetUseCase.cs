@@ -1,11 +1,9 @@
-using Editor.Requests.Images;
 using SpriteGame.Domain.Entities.Assets;
-using SpriteGame.Domain.Enums;
 using SpriteGame.Persistence.Repositories;
 using SpriteGame.Shared.Exceptions;
 using SpriteGame.Shared.Services;
 
-namespace Editor.UseCases.Images;
+namespace Editor.Features.Assets.PostAsset;
 
 public class PostAssetUseCase(
     FileStorageService fileStorageService,

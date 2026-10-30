@@ -1,6 +1,6 @@
-using Editor.UseCases.Images;
+using Editor.Features.Assets.PostAsset;
 
-namespace Editor.UseCases;
+namespace Editor.Features;
 
 public static class UseCaseServiceCollectionExtensions
 {

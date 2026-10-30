@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using SpriteGame.Domain.Enums;
 
-namespace Editor.Requests.Images;
+namespace Editor.Features.Assets.PostAsset;
 
 public record PostAssetRequest(
     [Required] IFormFile File,

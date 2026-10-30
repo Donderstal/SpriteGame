@@ -1,6 +1,6 @@
-using Editor.Endpoints.Assets;
+using Editor.Features.Assets.PostAsset;
 
-namespace Editor.Endpoints;
+namespace Editor.Features;
 
 public static class EndpointRoutBuilderExtensions
 {

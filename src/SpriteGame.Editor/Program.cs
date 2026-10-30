@@ -1,5 +1,4 @@
-using Editor.Endpoints;
-using Editor.UseCases;
+using Editor.Features;
 using SpriteGame.Persistence;
 using SpriteGame.Shared;
 

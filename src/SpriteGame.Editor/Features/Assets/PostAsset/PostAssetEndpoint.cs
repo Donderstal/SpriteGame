@@ -1,9 +1,7 @@
-using Editor.Requests.Images;
-using Editor.UseCases.Images;
 using Microsoft.AspNetCore.Mvc;
 using SpriteGame.Domain.Enums;
 
-namespace Editor.Endpoints.Assets;
+namespace Editor.Features.Assets.PostAsset;
 
 public static class PostAssetEndpoint
 {
@@ -23,7 +21,7 @@ public static class PostAssetEndpoint
 
         
         var newId = await useCase.Handle(request, ct);
-        return Results.Ok(newId);
+        return Results.Ok(new PostAssetResponse(newId));
     }
     
     private static bool ValidateIncoming(PostAssetRequest request)
