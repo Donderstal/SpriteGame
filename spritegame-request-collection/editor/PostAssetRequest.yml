@@ -1,0 +1,30 @@
+info:
+  name: PostAssetRequest
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://editor-api-spritegame.dev.localhost:44991/api/assets
+  body:
+    type: multipart-form
+    data:
+      - name: File
+        type: file
+        value:
+          - /home/donderstal/Pictures/tilesheettest/yum_old/Interior_Yum_Mart_Tiles.png
+        contentType: image/png
+      - name: Name
+        type: text
+        value: My-File
+      - name: Type
+        type: text
+        value: "0"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
