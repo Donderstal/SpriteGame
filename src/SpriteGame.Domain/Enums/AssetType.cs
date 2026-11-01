@@ -2,6 +2,13 @@ namespace SpriteGame.Domain.Enums;
 
 public enum AssetType
 {
-    Image,
-    Audio
+    AnimatedSprite,
+    StaticSprite,
+    BackgroundSprite,
+    AnimatedEffect,
+    TileSheet,
+    MapBackground,
+    UiSprite,
+    Music,
+    SoundEffect
 }

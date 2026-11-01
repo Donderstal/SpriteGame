@@ -18,7 +18,7 @@ public interface IEntityRepository<T> where T : class, IEntity
 
     Task<List<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties);
     
-    void DeleteAsync(T entity);
+    void Delete(T entity);
     
     void DeleteRange(IEnumerable<T> entities);
     

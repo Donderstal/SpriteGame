@@ -1,3 +1,6 @@
+using Editor.Features.Assets.DeleteAsset;
+using Editor.Features.Assets.GetAsset;
+using Editor.Features.Assets.GetAssetsByType;
 using Editor.Features.Assets.PostAsset;
 
 namespace Editor.Features;
@@ -15,7 +18,11 @@ public static class EndpointRoutBuilderExtensions
     {
         var imagesGroup = baseApiRoute.MapGroup("/assets");
         
-        imagesGroup.MapPostAssetEndpoint();
-        imagesGroup.DisableAntiforgery();
+        imagesGroup
+            .MapDeleteAssetEndpoint()
+            .MapGetAssetEndpoint()
+            .MapGetAssetsByTypeEndpoint()
+            .MapPostAssetEndpoint()
+            .DisableAntiforgery();
     }
 }

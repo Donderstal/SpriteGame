@@ -5,10 +5,12 @@ namespace Editor.Features.Assets.PostAsset;
 
 public static class PostAssetEndpoint
 {
-    public static void MapPostAssetEndpoint(this RouteGroupBuilder endpointGroupBuilder)
+    public static RouteGroupBuilder MapPostAssetEndpoint(this RouteGroupBuilder endpointGroupBuilder)
     {
         endpointGroupBuilder.MapPost("/", HandleRequest)
             .Accepts<PostAssetRequest>("multipart/form-data");
+        
+        return endpointGroupBuilder;
     }
 
     private static async Task<IResult> HandleRequest([FromForm] PostAssetRequest request, PostAssetUseCase useCase, CancellationToken ct)
@@ -16,7 +18,7 @@ public static class PostAssetEndpoint
         if(!ValidateIncoming(request))
             return Results.BadRequest(
                 $"Invalid contentType {request.File.ContentType} for assetType {request.Type.ToString()}." +
-                $" Ensure png for {AssetType.Image} and wav or mp3 for {AssetType.Audio}."
+                $" Ensure wav or mp3 for audio and png for other images."
             );
 
         
@@ -28,11 +30,11 @@ public static class PostAssetEndpoint
     {
         switch (request)
         {
-            case { Type: AssetType.Image, File.ContentType: not "image/png" }:
-            case { Type: AssetType.Audio, File.ContentType: not ("audio/wav" or "audio/mp3") }:
-                return false;
-            default:
+            case { Type: not (AssetType.Music or AssetType.SoundEffect), File.ContentType: "image/png" }:
+            case { Type: AssetType.Music or AssetType.SoundEffect, File.ContentType: ("audio/wav" or "audio/mp3") }:
                 return true;
+            default:
+                return false;
         }
     }
 }

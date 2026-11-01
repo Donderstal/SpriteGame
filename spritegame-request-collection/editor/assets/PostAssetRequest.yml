@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: http://editor-api-spritegame.dev.localhost:44991/api/assets
+  url: http://editor-api-spritegame.dev.localhost:5102/api/assets
   body:
     type: multipart-form
     data:
@@ -16,7 +16,7 @@ http:
         contentType: image/png
       - name: Name
         type: text
-        value: My-File
+        value: My-File-5
       - name: Type
         type: text
         value: "0"

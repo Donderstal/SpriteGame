@@ -51,7 +51,7 @@ public class EntityRepository<T>(SpriteGameDbContext dbContext) : IEntityReposit
         return await query.ToListAsync();
     }
 
-    public void DeleteAsync(T entity)
+    public void Delete(T entity)
     {
         dbContext.Set<T>().Remove(entity);
     }

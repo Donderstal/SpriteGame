@@ -37,6 +37,14 @@ public class FileStorageService
         return filePath;
     }
 
+    public async Task<string> GetFileAsBase64(string path, CancellationToken ct)
+    {
+        ValidateFileStoragePath();
+        
+        var file = await File.ReadAllBytesAsync(path, ct);
+        return Convert.ToBase64String(file);
+    }
+
     public void DeleteFile(string fileName)
     {
         try

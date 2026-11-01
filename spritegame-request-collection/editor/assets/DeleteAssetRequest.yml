@@ -1,0 +1,16 @@
+info:
+  name: DeleteAssetRequest
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: http://editor-api-spritegame.dev.localhost:5102/api/assets/01a18c44-0ca7-781e-b170-1c195001b58d
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

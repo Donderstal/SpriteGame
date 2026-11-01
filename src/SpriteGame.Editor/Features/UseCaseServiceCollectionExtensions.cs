@@ -1,4 +1,4 @@
-using Editor.Features.Assets.PostAsset;
+using Editor.Features.Assets;
 
 namespace Editor.Features;
 
@@ -6,7 +6,8 @@ public static class UseCaseServiceCollectionExtensions
 {
     public static IServiceCollection AddUseCases(this IServiceCollection services)
     {
-        services.AddScoped<PostAssetUseCase>();
+        services.AddAssetUseCases();
+        
         return services;
     }
 }
