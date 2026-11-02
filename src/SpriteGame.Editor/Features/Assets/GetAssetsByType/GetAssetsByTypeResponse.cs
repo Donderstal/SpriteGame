@@ -1,4 +1,4 @@
-using SpriteGame.Domain.Dtos;
+using SpriteGame.Application.Dtos;
 
 namespace Editor.Features.Assets.GetAssetsByType;
 

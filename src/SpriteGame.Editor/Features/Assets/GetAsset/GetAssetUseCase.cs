@@ -1,7 +1,8 @@
-using SpriteGame.Domain.Dtos;
+using SpriteGame.Application.Dtos;
+using SpriteGame.Application.Mappers;
+using SpriteGame.Application.Services;
 using SpriteGame.Domain.Entities.Assets;
 using SpriteGame.Persistence.Repositories;
-using SpriteGame.Shared.Services;
 
 namespace Editor.Features.Assets.GetAsset;
 
@@ -30,11 +31,6 @@ public class GetAssetUseCase(
             return null;
         }
 
-        return new AssetDto(
-            assetEntity.Id,
-            assetEntity.Name,
-            assetEntity.Type,
-            fileAsBase64
-        );
+        return assetEntity.ToAssetDto(fileAsBase64); 
     }
 }

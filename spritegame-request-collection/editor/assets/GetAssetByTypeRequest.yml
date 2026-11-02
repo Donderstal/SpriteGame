@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: http://editor-api-spritegame.dev.localhost:5102/api/assets/by-type
+  url: "{{baseAssetsUrl}}/by-type"
   body:
     type: json
     data: |-

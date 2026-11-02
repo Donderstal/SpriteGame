@@ -1,7 +1,7 @@
+using SpriteGame.Application.Exceptions;
 using SpriteGame.Domain.Constants;
-using SpriteGame.Shared.Exceptions;
 
-namespace SpriteGame.Shared.Services;
+namespace SpriteGame.Application.Services;
 
 public class FileStorageService
 {

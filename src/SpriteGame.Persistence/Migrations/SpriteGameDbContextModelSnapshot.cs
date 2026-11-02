@@ -397,22 +397,19 @@ namespace SpriteGame.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AssetId")
+                    b.Property<Guid>("BackgroundImageId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("BlockedAreas")
                         .IsRequired()
                         .HasColumnType("jsonb");
 
-                    b.Property<Guid>("ImageId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("MapId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AssetId");
+                    b.HasIndex("BackgroundImageId");
 
                     b.HasIndex("MapId");
 
@@ -425,15 +422,9 @@ namespace SpriteGame.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AssetId")
-                        .HasColumnType("uuid");
-
                     b.PrimitiveCollection<int[]>("BlockedTiles")
                         .IsRequired()
                         .HasColumnType("integer[]");
-
-                    b.Property<Guid>("ImageId")
-                        .HasColumnType("uuid");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -442,9 +433,12 @@ namespace SpriteGame.Persistence.Migrations
                     b.Property<int>("TileCount")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("TileSheetImageId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AssetId");
+                    b.HasIndex("TileSheetImageId");
 
                     b.ToTable("TileSheets");
                 });
@@ -572,9 +566,6 @@ namespace SpriteGame.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AssetId")
-                        .HasColumnType("uuid");
-
                     b.Property<int?>("BlockedAreaHeight")
                         .HasColumnType("integer");
 
@@ -597,7 +588,7 @@ namespace SpriteGame.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("SpriteImageId")
+                    b.Property<Guid>("SpriteSheetId")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("VerticallyAligned")
@@ -605,9 +596,9 @@ namespace SpriteGame.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AssetId");
-
                     b.HasIndex("InteractiveMapLayerId");
+
+                    b.HasIndex("SpriteSheetId");
 
                     b.ToTable("Sprites");
                 });
@@ -808,9 +799,9 @@ namespace SpriteGame.Persistence.Migrations
 
             modelBuilder.Entity("SpriteGame.Domain.Entities.Maps.StaticMapLayer", b =>
                 {
-                    b.HasOne("SpriteGame.Domain.Entities.Assets.Asset", "Asset")
+                    b.HasOne("SpriteGame.Domain.Entities.Assets.Asset", "BackgroundImage")
                         .WithMany()
-                        .HasForeignKey("AssetId")
+                        .HasForeignKey("BackgroundImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -820,20 +811,20 @@ namespace SpriteGame.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Asset");
+                    b.Navigation("BackgroundImage");
 
                     b.Navigation("Map");
                 });
 
             modelBuilder.Entity("SpriteGame.Domain.Entities.Maps.TileSheet", b =>
                 {
-                    b.HasOne("SpriteGame.Domain.Entities.Assets.Asset", "Asset")
+                    b.HasOne("SpriteGame.Domain.Entities.Assets.Asset", "TileSheetImage")
                         .WithMany()
-                        .HasForeignKey("AssetId")
+                        .HasForeignKey("TileSheetImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Asset");
+                    b.Navigation("TileSheetImage");
                 });
 
             modelBuilder.Entity("SpriteGame.Domain.Entities.PlayerData.Inventory", b =>
@@ -917,17 +908,17 @@ namespace SpriteGame.Persistence.Migrations
 
             modelBuilder.Entity("SpriteGame.Domain.Entities.Sprites.Sprite", b =>
                 {
-                    b.HasOne("SpriteGame.Domain.Entities.Assets.Asset", "Asset")
-                        .WithMany()
-                        .HasForeignKey("AssetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SpriteGame.Domain.Entities.Maps.InteractiveMapLayer", null)
                         .WithMany("Sprites")
                         .HasForeignKey("InteractiveMapLayerId");
 
-                    b.Navigation("Asset");
+                    b.HasOne("SpriteGame.Domain.Entities.Assets.Asset", "SpriteSheet")
+                        .WithMany()
+                        .HasForeignKey("SpriteSheetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SpriteSheet");
                 });
 
             modelBuilder.Entity("SpriteGame.Domain.Entities.Sprites.SpriteAnimation", b =>

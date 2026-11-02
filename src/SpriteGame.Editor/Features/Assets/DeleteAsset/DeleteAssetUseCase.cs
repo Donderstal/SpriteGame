@@ -1,6 +1,6 @@
+using SpriteGame.Application.Services;
 using SpriteGame.Domain.Entities.Assets;
 using SpriteGame.Persistence.Repositories;
-using SpriteGame.Shared.Services;
 
 namespace Editor.Features.Assets.DeleteAsset;
 

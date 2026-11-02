@@ -1,0 +1,16 @@
+info:
+  name: GetSpriteRequest
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseSpritesUrl}}/01a1973d-cda2-7cd6-a5b0-997de8d7dbca"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

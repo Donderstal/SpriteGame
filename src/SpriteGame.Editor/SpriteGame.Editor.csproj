@@ -17,9 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SpriteGame.Application\SpriteGame.Application.csproj" />
       <ProjectReference Include="..\SpriteGame.Persistence\SpriteGame.Persistence.csproj" />
       <ProjectReference Include="..\SpriteGame.ServiceDefaults\SpriteGame.ServiceDefaults.csproj" />
-      <ProjectReference Include="..\SpriteGame.Shared\SpriteGame.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,7 +1,7 @@
+using SpriteGame.Application.Exceptions;
+using SpriteGame.Application.Services;
 using SpriteGame.Domain.Entities.Assets;
 using SpriteGame.Persistence.Repositories;
-using SpriteGame.Shared.Exceptions;
-using SpriteGame.Shared.Services;
 
 namespace Editor.Features.Assets.PostAsset;
 

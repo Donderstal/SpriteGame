@@ -6,11 +6,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY ["SpriteGame.Application/SpriteGame.Application.csproj", "SpriteGame.Application/"]
 COPY ["SpriteGame.Editor/SpriteGame.Editor.csproj", "SpriteGame.Editor/"]
 COPY ["SpriteGame.Persistence/SpriteGame.Persistence.csproj", "SpriteGame.Persistence/"]
 COPY ["SpriteGame.Domain/SpriteGame.Domain.csproj", "SpriteGame.Domain/"]
 COPY ["SpriteGame.ServiceDefaults/SpriteGame.ServiceDefaults.csproj", "SpriteGame.ServiceDefaults/"]
-COPY ["SpriteGame.Shared/SpriteGame.Shared.csproj", "SpriteGame.Shared/"]
 RUN dotnet restore "SpriteGame.Editor/SpriteGame.Editor.csproj"
 COPY . .
 WORKDIR "/src/SpriteGame.Editor"

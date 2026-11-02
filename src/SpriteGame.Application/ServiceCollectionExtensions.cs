@@ -1,13 +1,15 @@
 using Microsoft.Extensions.DependencyInjection;
-using SpriteGame.Shared.Services;
+using SpriteGame.Application.Features;
+using SpriteGame.Application.Services;
 
-namespace SpriteGame.Shared;
+namespace SpriteGame.Application;
 
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddSharedServices(this IServiceCollection services)
     {
         services.AddSingleton<FileStorageService>();
+        services.AddUseCases();
         
         return services;
     }

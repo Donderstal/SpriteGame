@@ -1,6 +1,7 @@
 using Editor.Features;
+using SpriteGame.Application;
+using SpriteGame.Application.Features;
 using SpriteGame.Persistence;
-using SpriteGame.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,7 @@ app.MapDefaultEndpoints();
 
 await app.MigrateDbAsync();
 
+app.MapSharedEndpoints();
 app.MapEndpoints();
 
 app.Run();

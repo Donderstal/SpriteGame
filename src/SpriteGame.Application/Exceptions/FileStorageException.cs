@@ -1,4 +1,4 @@
-namespace SpriteGame.Shared.Exceptions;
+namespace SpriteGame.Application.Exceptions;
 
 public class FileStorageException : Exception
 {

@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: http://editor-api-spritegame.dev.localhost:5102/api/assets
+  url: "{{baseAssetsUrl}}"
   body:
     type: multipart-form
     data:

@@ -1,7 +1,8 @@
-using SpriteGame.Domain.Dtos;
+using SpriteGame.Application.Dtos;
+using SpriteGame.Application.Mappers;
+using SpriteGame.Application.Services;
 using SpriteGame.Domain.Entities.Assets;
 using SpriteGame.Persistence.Repositories;
-using SpriteGame.Shared.Services;
 
 namespace Editor.Features.Assets.GetAssetsByType;
 
@@ -29,17 +30,10 @@ public class GetAssetsByTypeUseCase(
                 await Console.Error.WriteLineAsync($"File {assetEntity.Id} not found at path {assetEntity.Path}.");
             }
 
-            if (fileAsBase64 != string.Empty)
-            {
-                assetDtos.Add(
-                    new AssetDto(
-                        assetEntity.Id,
-                        assetEntity.Name,
-                        assetEntity.Type,
-                        fileAsBase64
-                    )    
-                );
-            }
+            if (fileAsBase64 == string.Empty)
+                continue;
+            
+            assetDtos.Add(assetEntity.ToAssetDto(fileAsBase64));
         }
 
         return assetDtos;
